@@ -6,7 +6,7 @@ const items = props => {
        <div>
            <ul>
                <li>{props.name}</li>
-               <li>{props.artist}</li>
+               <li>{props.other}</li>
            </ul>
        </div>
       );
