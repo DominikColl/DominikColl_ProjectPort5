@@ -7,7 +7,7 @@ import TopCharts from '../Components/topChartsItem';
 class Home extends Component {
     state = { search:'',name:'name',other:'other',filter:'',collection:[], }
     componentDidMount() {
-      this.fetchTopTracks();
+      //this.fetchTopTracks();
      // console.log(this.state.collection);
     }
     async fetchAlbum(value){
@@ -123,8 +123,8 @@ class Home extends Component {
        }else if(this.state.filter==='songButton'){
         return <SongItem songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url}/>
       }else{
-       return <TopCharts songName={e.name} artist={e.artist.name} playCount={e.playcount} followers={e.listeners} url={e.url}/>
-        console.log(e);
+    //    return <TopCharts songName={e.name} artist={e.artist.name} playCount={e.playcount} followers={e.listeners} url={e.url}/>
+        //console.log(e);
       }
      })
         return ( 
