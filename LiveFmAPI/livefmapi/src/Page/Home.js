@@ -5,21 +5,22 @@ import SongItem from '../Components/songItem';
 import ArtistItem from '../Components/artistItem';
 import TopCharts from '../Components/topChartsItem';
 class Home extends Component {
-    state = { search:'',name:'name',other:'other',filter:'',collection:[], }
+    state = { search:'',name:'name',other:'other',filter:'',collection:[],topTracks:[] }
     componentDidMount() {
-      //this.fetchTopTracks();
-     // console.log(this.state.collection);
+      this.fetchTopTracks();
+     console.log('test f');
     }
     async fetchAlbum(value){
-        let collection=[];
+        let collection;
         console.log(value);
         const res=await fetch(`http://ws.audioscrobbler.com/2.0/?method=album.search&album=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
         const data=await res.json()
         //if data results exist
         if(data.results){
-          for(let i=0;i<20;i++){
-             collection.push(data.results.albummatches.album[i]);
-           }
+          // for(let i=0;i<20;i++){
+          //    collection.push(data.results.albummatches.album[i]);
+          //  }
+          collection=data.results.albummatches.album;
            console.log(collection);
            this.setState({collection});
           console.log('exist');
@@ -77,25 +78,22 @@ class Home extends Component {
         console.log(data);
       }
        async fetchTopTracks(){
-         let collection=[];
+         let topTracks=[];
         const res=await fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
         const data=await res.json()
        // console.log(data);
         for(let i=0;i<10;i++){
-          collection.push(data.tracks.track[i]);
+          topTracks.push(data.tracks.track[i]);
         }
         console.log('from top charts collection');
       //  console.log(collection)
-        this.setState({collection});
+        this.setState({topTracks});
        // return collection;
       }
       fetch=(searchQuery)=>{
         this.fetchAlbum(searchQuery);
       }
-      displayTopTracks=()=>{
-       // this.fetchTopTracks();
-       // console.log(this.state.collection);
-      }
+      
       click=()=>{
          this.fetchTopTracks();
           console.log(this.state.filter);
@@ -122,16 +120,13 @@ class Home extends Component {
          return <AlbumItem albumName={e.name} artist={e.artist} url={e.url}/>
        }else if(this.state.filter==='songButton'){
         return <SongItem songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url}/>
-      }else{
-    //    return <TopCharts songName={e.name} artist={e.artist.name} playCount={e.playcount} followers={e.listeners} url={e.url}/>
-        //console.log(e);
       }
      })
         return ( 
           <div>
             <Form btnClick={this.btnClick}click={this.click}/>
             {fillContent}
-            {this.displayTopTracks()}
+            {/* {this.displayTopTracks()} */}
           </div>
          );
     }
