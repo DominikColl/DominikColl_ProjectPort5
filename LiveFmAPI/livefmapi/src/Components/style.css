@@ -56,6 +56,7 @@ form input{
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     list-style-type: none;
+   
     /* border: 1px solid purple; */
     /* display: flex;
     flex-wrap: wrap; */
@@ -69,7 +70,6 @@ ul div{
   border:1px solid red;
 }
 li {
-    /* list items will stay equal width to fill parent */
   flex-grow: 1;
 }
 li button{
@@ -84,7 +84,6 @@ nav{
      margin-bottom: 2rem;
      padding:.4rem;
 }
-
 nav h1{
     font-size: 2rem;
     margin-left: 10%;

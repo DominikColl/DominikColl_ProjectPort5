@@ -5,10 +5,13 @@ import SongItem from '../Components/songItem';
 import ArtistItem from '../Components/artistItem';
 import TopCharts from '../Components/topChartsItem';
 import Header from '../Components/header';
+import {NavLink} from 'react-router-dom';
 import '../Components/style.css';
+import {test,fetchAlbum} from '../Page/Code.js';
 class Home extends Component {
     state = { search:'',name:'name',other:'other',filter:'',collection:[],topTracks:[] }
     componentDidMount() {
+      test();
       this.fetchTopTracks();
      console.log('test f');
     }
@@ -28,10 +31,11 @@ class Home extends Component {
            this.setState({collection});
           console.log('exist');
           console.log(data.results.albummatches.album[0]);
-          let name=data.results.albummatches.album[0].name;
-          let other='Artist: '+data.results.albummatches.album[0].artist;
-          this.setState({name});
-          this.setState({other});
+          return collection;
+          // let name=data.results.albummatches.album[0].name;
+          // let other='Artist: '+data.results.albummatches.album[0].artist;
+          // this.setState({name});
+          // this.setState({other});
         }
       }
       async fetchSong(value){
@@ -92,8 +96,7 @@ class Home extends Component {
       }
       fetch=(searchQuery)=>{
         this.fetchAlbum(searchQuery);
-      }
-      
+      } 
       click=()=>{
          this.fetchTopTracks();
           console.log(this.state.filter);
@@ -115,21 +118,19 @@ class Home extends Component {
     render() { 
      let fillContent=this.state.collection.map((e,i)=>{
        if(this.state.filter==='artistButton'){
-        return <ArtistItem name={e.name} followers={e.listeners} url={e.url}/>
+        return <NavLink to='/MoreInfo'><ArtistItem name={e.name} followers={e.listeners} url={e.url}/></NavLink>
        }else if(this.state.filter==='albumButton'){
-         return <AlbumItem albumName={e.name} artist={e.artist} url={e.url}/>
+         return <NavLink to='/MoreInfo'><AlbumItem albumName={e.name} artist={e.artist} url={e.url}/></NavLink>
        }else if(this.state.filter==='songButton'){
-        return <SongItem songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url}/>
+        return <NavLink to='/MoreInfo'><SongItem songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url}/></NavLink>
       }
      })
         return ( 
           <div>
-            <Header/>
             <Form btnClick={this.btnClick}click={this.click}/>
             <ul id='listCon'>
             {fillContent}
             </ul>
-            {/* {this.displayTopTracks()} */}
           </div>
          );
     }
