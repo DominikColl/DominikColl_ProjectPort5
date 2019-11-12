@@ -4,6 +4,8 @@ import AlbumItem from '../Components/albumItem';
 import SongItem from '../Components/songItem';
 import ArtistItem from '../Components/artistItem';
 import TopCharts from '../Components/topChartsItem';
+import Header from '../Components/header';
+import '../Components/style.css';
 class Home extends Component {
     state = { search:'',name:'name',other:'other',filter:'',collection:[],topTracks:[] }
     componentDidMount() {
@@ -11,16 +13,17 @@ class Home extends Component {
      console.log('test f');
     }
     async fetchAlbum(value){
-        let collection;
+        let collection=[];
         console.log(value);
         const res=await fetch(`http://ws.audioscrobbler.com/2.0/?method=album.search&album=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
         const data=await res.json()
         //if data results exist
         if(data.results){
-          // for(let i=0;i<20;i++){
-          //    collection.push(data.results.albummatches.album[i]);
-          //  }
-          collection=data.results.albummatches.album;
+          //this is gonna be a problem
+          for(let i=0;i<9;i++){
+             collection.push(data.results.albummatches.album[i]);
+           }
+          //collection=data.results.albummatches.album;
            console.log(collection);
            this.setState({collection});
           console.log('exist');
@@ -30,9 +33,7 @@ class Home extends Component {
           this.setState({name});
           this.setState({other});
         }
-    
       }
-   
       async fetchSong(value){
         let collection=[];
         const res=await fetch(`http://ws.audioscrobbler.com/2.0/?method=track.search&track=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
@@ -40,7 +41,6 @@ class Home extends Component {
         console.log(data);
         if(data.results){
           for(let i=0;i<20;i++){
-            // console.log(data.results.albummatches.album[i]);
              collection.push(data.results.trackmatches.track[i]);
            }
            console.log(collection);
@@ -59,7 +59,7 @@ class Home extends Component {
         const data=await res.json()
         console.log(data);
         if(data.results){
-          for(let i=0;i<10;i++){
+          for(let i=0;i<9;i++){
              collection.push(data.results.artistmatches.artist[i]);
            }
            console.log(collection);
@@ -82,7 +82,7 @@ class Home extends Component {
         const res=await fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
         const data=await res.json()
        // console.log(data);
-        for(let i=0;i<10;i++){
+        for(let i=0;i<9;i++){
           topTracks.push(data.tracks.track[i]);
         }
         console.log('from top charts collection');
@@ -124,8 +124,11 @@ class Home extends Component {
      })
         return ( 
           <div>
+            <Header/>
             <Form btnClick={this.btnClick}click={this.click}/>
+            <ul id='listCon'>
             {fillContent}
+            </ul>
             {/* {this.displayTopTracks()} */}
           </div>
          );

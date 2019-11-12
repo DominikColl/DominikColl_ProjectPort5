@@ -1,15 +1,15 @@
 import React from 'react';
-
+import './style.css';
 
 const artistItem = props => { 
     return (
        <div>
-           <ul>
+           
                <li>Song Name:{props.songName}</li>
                <li>Artist Name:{props.artistName}</li>
                <li>Plays:{props.plays}</li>
                <li>More info:{props.url}</li>
-           </ul>
+        
        </div>
       );
 }

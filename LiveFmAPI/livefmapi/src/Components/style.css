@@ -1,0 +1,95 @@
+/* RESET */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+/* RESET OVER */
+body{
+    background-color: white;
+}
+#formButCon{
+    display: flex;
+    list-style-type: none;
+
+}
+form{
+    border:1px solid red;
+    width:30%;
+    margin: 0 auto;
+}
+form input{
+    width:60%;
+    margin-left: 10%;
+}
+#listCon{
+    /* width:100%; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    list-style-type: none;
+    /* border: 1px solid purple; */
+    /* display: flex;
+    flex-wrap: wrap; */
+}
+ul div{
+    border:1px solid blue;
+    margin: 2rem;
+}
+#formButCon{
+  display: flex;
+  border:1px solid red;
+}
+li {
+    /* list items will stay equal width to fill parent */
+  flex-grow: 1;
+}
+li button{
+    width:100%;
+    padding:.5rem;
+}
+input{
+    padding: 1rem;
+}
+nav{
+     background-color: blue;
+     margin-bottom: 2rem;
+     padding:.4rem;
+}
+
+nav h1{
+    font-size: 2rem;
+    margin-left: 10%;
+}
+#searchBut{
+    background-color: white;
+}
+
