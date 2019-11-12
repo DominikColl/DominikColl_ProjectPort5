@@ -37,7 +37,6 @@ body{
 #formButCon{
     display: flex;
     list-style-type: none;
-
 }
 form{
     border:1px solid red;
@@ -67,7 +66,19 @@ ul div{
 }
 #formButCon{
   display: flex;
-  border:1px solid red;
+}
+#nav{
+    background-color: #ff3a20;
+}
+form{
+    background-color: #ff3a20;
+    /* padding:2rem; */
+}
+#fDiv{
+    padding:2rem;
+}
+body{
+    background-color: #2d3142;
 }
 li {
   flex-grow: 1;
@@ -78,6 +89,13 @@ li button{
 }
 input{
     padding: 1rem;
+    background-color: #ad2614;
+    border:none;
+    color:white;
+}
+::placeholder{
+    color: white;
+    font-size: .8rem;
 }
 nav{
      background-color: blue;
@@ -89,6 +107,13 @@ nav h1{
     margin-left: 10%;
 }
 #searchBut{
-    background-color: white;
-}
+    background-color: #ad2614;
+    border:none;
 
+}
+a:visited{
+    color:white;
+}
+form h2{
+    margin-bottom: 1.5rem;
+}

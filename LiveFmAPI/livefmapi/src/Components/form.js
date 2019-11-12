@@ -6,9 +6,11 @@ const form = props => {
     return (
         <div >
         <form> 
+        <div id='fDiv'>
         <h2>Search</h2>
-            <input type='text'></input>
+            <input type='text' placeholder='Search your favorite songs,albums, or artist'></input>
              <Button string={<FaSearch/>} onClick={props.click}/>
+             </div>
             <h2>Must choose button to filter search </h2>
             <ul id='formButCon'>
                 {/* will switch to button component */}
