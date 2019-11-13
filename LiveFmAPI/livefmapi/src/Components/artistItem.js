@@ -5,7 +5,7 @@ const artistItem = props => {
     return (
        <div>
                <li><img src={props.img}/></li>
-               <li id='artistItem'>Artist Name:{props.name}</li>
+               <li onClick={props.click} >Artist Name:{props.name}</li>
                <li id='artistItem'>Followers:{props.followers}</li>
                <li id='artistItem'>More Info:{props.url}</li>
        </div>

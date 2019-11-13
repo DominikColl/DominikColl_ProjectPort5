@@ -7,8 +7,7 @@ import TopCharts from '../Components/topChartsItem';
 import Header from '../Components/header';
 import {NavLink} from 'react-router-dom';
 import '../Components/style.css';
-import MoreInfo from './MoreInfo';
-import {Switch,Route} from 'react-router-dom';
+import {artistClickk} from '../Page/Code';
 
 //project built using livefm api and spotify/youtube playback
 // Reacticons used and css Reset came from http://meyerweb.com/eric/tools/css/reset/ 
@@ -132,15 +131,22 @@ class Home extends Component {
        this.setState({filter});
        console.log(filter); 
      }
+     //I CANT GET VALUE INSIDE OF LI OR ANYTHING NEEDED FROM TARGETING A COMPENTNT
+     artistClick=(e)=>{
+       console.log(e.target.id);
+       
+      //artistClickk();
+     }
+     //<NavLink onClick={this.itemClick} to='/MoreInfo'><AlbumItem img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url}/></NavLink>
     render() { 
       //filling content based off what the filter is getting data from collection in state set when fetching data 
      let fillContent=this.state.collection.map((e,i)=>{
        if(this.state.filter==='artistButton'){
-        return <NavLink onClick={this.itemClick} to='/MoreInfo'><ArtistItem img={e.image[2]['#text']} name={e.name} followers={e.listeners} url={e.url}/></NavLink>
+        return <li id={i}to='/MoreInfo'><ArtistItem id={i} click={this.artistClick}img={e.image[2]['#text']} name={e.name} followers={e.listeners} url={e.url}/></li>
        }else if(this.state.filter==='albumButton'){
-         return <NavLink onClick={this.itemClick} to='/MoreInfo'><AlbumItem img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url}/></NavLink>
+         return <li onClick={((e) => this.artistClick(e))} ><AlbumItem img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url}/></li>
        }else if(this.state.filter==='songButton'){
-        return <NavLink onClick={this.itemClick} to='/MoreInfo'><SongItem img={e.image[2]['#text']} songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url}/></NavLink>
+        return <li onClick={this.trackClick} to='/MoreInfo'><SongItem img={e.image[2]['#text']} songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url}/></li>
       }
      })
         return ( 

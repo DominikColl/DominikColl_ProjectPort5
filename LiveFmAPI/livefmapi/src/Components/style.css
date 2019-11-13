@@ -60,15 +60,18 @@ form input{
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     list-style-type: none;
-   
+   color: white;
     /* border: 1px solid purple; */
     /* display: flex;
     flex-wrap: wrap; */
 }
 ul div{
-    border:1px solid blue;
-    margin: 2rem;
+    /* border:1px solid blue; */
+    /* margin: 2rem; */
+    
+   
 }
+
 #formButCon{
   display: flex;
 }
