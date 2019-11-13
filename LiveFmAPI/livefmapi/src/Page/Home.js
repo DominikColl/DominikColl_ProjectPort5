@@ -7,14 +7,21 @@ import TopCharts from '../Components/topChartsItem';
 import Header from '../Components/header';
 import {NavLink} from 'react-router-dom';
 import '../Components/style.css';
-import {test,fetchAlbum} from '../Page/Code.js';
+
+//project built using livefm api and spotify/youtube playback
+// Reacticons used and css Reset came from http://meyerweb.com/eric/tools/css/reset/ 
 class Home extends Component {
-    state = { search:'',name:'name',other:'other',filter:'',collection:[],topTracks:[] }
+  //state 
+    state = { search:'',name:'name',other:'other',filter:'',collection:[],topTracks:[],current:[] }
+    
+    //happens when all compents load in
     componentDidMount() {
-      test();
+      
       this.fetchTopTracks();
      console.log('test f');
     }
+    
+    //fetchs album based of search value
     async fetchAlbum(value){
         let collection=[];
         console.log(value);
@@ -38,6 +45,7 @@ class Home extends Component {
           // this.setState({other});
         }
       }
+      //fetchs song based of search value
       async fetchSong(value){
         let collection=[];
         const res=await fetch(`http://ws.audioscrobbler.com/2.0/?method=track.search&track=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
@@ -57,6 +65,7 @@ class Home extends Component {
           this.setState({other});
         }
       }
+      //fetchs artist based on search value
       async fetchArtist(value){
         let collection=[];
         const res=await fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
@@ -76,11 +85,13 @@ class Home extends Component {
           this.setState({other});
         }
       }
+      //fetchs most popular artist
       async fetchTopArtist(){
         const res=await fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
         const data=await res.json()
         console.log(data);
       }
+      //fetchs most popular tracks
        async fetchTopTracks(){
          let topTracks=[];
         const res=await fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
@@ -94,9 +105,12 @@ class Home extends Component {
         this.setState({topTracks});
        // return collection;
       }
+      //for debugging delete later
       fetch=(searchQuery)=>{
         this.fetchAlbum(searchQuery);
       } 
+      //click function that will happen when form is submitted
+      //checks filter if fetching song artist or album the triggers fucntion to fetch data
       click=()=>{
          this.fetchTopTracks();
           console.log(this.state.filter);
@@ -110,25 +124,28 @@ class Home extends Component {
               this.fetchSong(search);
             }
      }
+     //happens when filter button is clicked will be set using id of button clicked
      btnClick=(e)=>{
        let filter=e.target.id;
        this.setState({filter});
        console.log(filter); 
      }
     render() { 
+      //filling content based off what the filter is getting data from collection in state set when fetching data 
      let fillContent=this.state.collection.map((e,i)=>{
        if(this.state.filter==='artistButton'){
-        return <NavLink to='/MoreInfo'><ArtistItem name={e.name} followers={e.listeners} url={e.url}/></NavLink>
+        return <NavLink onClick={this.itemClick} to='/MoreInfo'><ArtistItem name={e.name} followers={e.listeners} url={e.url}/></NavLink>
        }else if(this.state.filter==='albumButton'){
-         return <NavLink to='/MoreInfo'><AlbumItem albumName={e.name} artist={e.artist} url={e.url}/></NavLink>
+         return <NavLink onClick={this.itemClick} to='/MoreInfo'><AlbumItem albumName={e.name} artist={e.artist} url={e.url}/></NavLink>
        }else if(this.state.filter==='songButton'){
-        return <NavLink to='/MoreInfo'><SongItem songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url}/></NavLink>
+        return <NavLink onClick={this.itemClick} to='/MoreInfo'><SongItem songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url}/></NavLink>
       }
      })
         return ( 
           <div>
             <Form btnClick={this.btnClick}click={this.click}/>
             <ul id='listCon'>
+            {/* calling function */}
             {fillContent}
             </ul>
           </div>

@@ -2,10 +2,11 @@
 import {NavLink} from 'react-router-dom';
 import React, { Component } from 'react';
 import AlbumItem from '../Components/albumItem';
-export function test(){
-    console.log('test fron code');
-}
 
+
+
+
+// export so it can be used in home 
 export const fetchAlbum = async (value) => {
     let collection=[];
         console.log(value);

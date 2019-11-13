@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa";
 import './style.css';
 const form = props => { 
     return (
-        <div >
+        <div>
         <form> 
         <div id='fDiv'>
         <h2>Search</h2>
@@ -13,12 +13,11 @@ const form = props => {
              </div>
             <h2>Must choose button to filter search </h2>
             <ul id='formButCon'>
-                {/* will switch to button component */}
+            {/* passing onClick event to be placed in page */}
                 <li><button id='formBut' onClick={props.btnClick} type='button' id='artistButton'>Artist</button></li>
                 <li><button id='formBut' onClick={props.btnClick}type='button' id='songButton'>Song</button></li>
-                <li><button id='formBut'  onClick={props.btnClick}type='button' id='albumButton'>Album</button></li>
+                <li><button id='formBut' onClick={props.btnClick}type='button' id='albumButton'>Album</button></li>
             </ul>
-            
         </form>
         </div>
       );
