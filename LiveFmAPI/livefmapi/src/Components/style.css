@@ -116,7 +116,7 @@ nav h1{
     border:none;
 
 }
-a:visited{
+a:visited,a{
     color:white;
 }
 form h2{

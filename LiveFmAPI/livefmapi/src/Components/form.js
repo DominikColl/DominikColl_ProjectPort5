@@ -14,9 +14,9 @@ const form = props => {
             <h2>Must choose button to filter search </h2>
             <ul id='formButCon'>
             {/* passing onClick event to be placed in page */}
-                <li><button id='formBut' onClick={props.btnClick} type='button' id='artistButton'>Artist</button></li>
-                <li><button id='formBut' onClick={props.btnClick}type='button' id='songButton'>Song</button></li>
-                <li><button id='formBut' onClick={props.btnClick}type='button' id='albumButton'>Album</button></li>
+                <li><button class='formBut' onClick={props.btnClick} type='button' id='artistButton'>Artist</button></li>
+                <li><button class='formBut' onClick={props.btnClick}type='button' id='songButton'>Song</button></li>
+                <li><button class='formBut' onClick={props.btnClick}type='button' id='albumButton'>Album</button></li>
             </ul>
         </form>
         </div>

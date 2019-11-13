@@ -7,6 +7,8 @@ import TopCharts from '../Components/topChartsItem';
 import Header from '../Components/header';
 import {NavLink} from 'react-router-dom';
 import '../Components/style.css';
+import MoreInfo from './MoreInfo';
+import {Switch,Route} from 'react-router-dom';
 
 //project built using livefm api and spotify/youtube playback
 // Reacticons used and css Reset came from http://meyerweb.com/eric/tools/css/reset/ 
@@ -17,7 +19,7 @@ class Home extends Component {
     //happens when all compents load in
     componentDidMount() {
       
-      this.fetchTopTracks();
+      // this.fetchTopTracks();
      console.log('test f');
     }
     
@@ -134,11 +136,11 @@ class Home extends Component {
       //filling content based off what the filter is getting data from collection in state set when fetching data 
      let fillContent=this.state.collection.map((e,i)=>{
        if(this.state.filter==='artistButton'){
-        return <NavLink onClick={this.itemClick} to='/MoreInfo'><ArtistItem name={e.name} followers={e.listeners} url={e.url}/></NavLink>
+        return <NavLink onClick={this.itemClick} to='/MoreInfo'><ArtistItem img={e.image[2]['#text']} name={e.name} followers={e.listeners} url={e.url}/></NavLink>
        }else if(this.state.filter==='albumButton'){
-         return <NavLink onClick={this.itemClick} to='/MoreInfo'><AlbumItem albumName={e.name} artist={e.artist} url={e.url}/></NavLink>
+         return <NavLink onClick={this.itemClick} to='/MoreInfo'><AlbumItem img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url}/></NavLink>
        }else if(this.state.filter==='songButton'){
-        return <NavLink onClick={this.itemClick} to='/MoreInfo'><SongItem songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url}/></NavLink>
+        return <NavLink onClick={this.itemClick} to='/MoreInfo'><SongItem img={e.image[2]['#text']} songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url}/></NavLink>
       }
      })
         return ( 
@@ -148,7 +150,11 @@ class Home extends Component {
             {/* calling function */}
             {fillContent}
             </ul>
-          </div>
+          
+           {/* <Route exact path='/MoreInfo' render={()=>MoreInfo}/>
+           <Route exact path= '/' component={Home}/>
+                <Route exact path='/Home' component={Home}/> */}
+           </div>
          );
     }
 }
