@@ -13,3 +13,10 @@ export const artistClickk = async (artist) => {
         let r=await data;
         console.log(r);
 }
+
+export const loadAlbumDetail = async (mbid) =>{
+    // let albumArray = [];
+    const res=await fetch(`http://ws.audioscrobbler.com/2.0/?method=album.getinfo&mbid=${mbid}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
+    const data=await res.json();
+    return await data;
+}
