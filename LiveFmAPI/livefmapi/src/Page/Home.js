@@ -129,6 +129,11 @@ class Home extends Component {
        
       //artistClickk();
      }
+     homeClick=()=>{
+       let collection=[];
+       document.querySelector('input').value='';
+       this.setState({collection});
+     }
      //<NavLink onClick={this.itemClick} to='/MoreInfo'><AlbumItem img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url}/></NavLink>
     render() { 
       //filling content based off what the filter is getting data from collection in state set when fetching data 
@@ -143,6 +148,7 @@ class Home extends Component {
      })
         return ( 
           <div>
+             <Header click={this.homeClick}/>
             <Form btnClick={this.btnClick}click={this.click}/>
             <ul id='listCon'>
             {/* calling function */}

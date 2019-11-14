@@ -6,7 +6,7 @@ import {NavLink} from 'react-router-dom';
 const header = props => { 
     return (
         <nav id="nav">
-           <NavLink to='/Home'> <h1 id='logo'><FaHome/></h1></NavLink>
+           <NavLink to='/Home'> <h1 id='logo'><FaHome onClick={props.click}/></h1></NavLink>
         </nav>
       );
 }

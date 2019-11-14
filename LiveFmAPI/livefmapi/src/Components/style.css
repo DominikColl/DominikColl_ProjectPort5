@@ -63,7 +63,9 @@ grid-column-gap: 30px;
 grid-row-gap: 15px;
     list-style-type: none;
    color: white;
-    border: 1px solid purple;
+   margin-top: 1rem;
+   padding-left: .5rem;
+    /* border: 1px solid purple; */
     /* width: 85%; */
     /* display: flex;
     flex-wrap: wrap; */
