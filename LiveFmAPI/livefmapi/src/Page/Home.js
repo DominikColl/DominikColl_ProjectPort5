@@ -14,10 +14,8 @@ import {artistClickk} from '../Page/Code';
 class Home extends Component {
   //state 
     state = { search:'',name:'name',other:'other',filter:'',collection:[],topTracks:[],current:[] }
-    
     //happens when all compents load in
     componentDidMount() {
-      
       // this.fetchTopTracks();
      console.log('test f');
     }
@@ -40,10 +38,7 @@ class Home extends Component {
           console.log('exist');
           console.log(data.results.albummatches.album[0]);
           return collection;
-          // let name=data.results.albummatches.album[0].name;
-          // let other='Artist: '+data.results.albummatches.album[0].artist;
-          // this.setState({name});
-          // this.setState({other});
+          
         }
       }
       //fetchs song based of search value
@@ -93,23 +88,20 @@ class Home extends Component {
         console.log(data);
       }
       //fetchs most popular tracks
-       async fetchTopTracks(){
-         let topTracks=[];
-        const res=await fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
-        const data=await res.json()
-       // console.log(data);
-        for(let i=0;i<9;i++){
-          topTracks.push(data.tracks.track[i]);
-        }
-        console.log('from top charts collection');
-      //  console.log(collection)
-        this.setState({topTracks});
-       // return collection;
-      }
-      //for debugging delete later
-      fetch=(searchQuery)=>{
-        this.fetchAlbum(searchQuery);
-      } 
+      async fetchTopTracks(){
+        let topTracks=[];
+       const res=await fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
+       const data=await res.json()
+      // console.log(data);
+       for(let i=0;i<9;i++){
+         topTracks.push(data.tracks.track[i]);
+       }
+       console.log('from top charts collection');
+     //  console.log(collection)
+     //  this.setState({topTracks});
+      // return collection;
+     }
+
       //click function that will happen when form is submitted
       //checks filter if fetching song artist or album the triggers fucntion to fetch data
       click=()=>{
@@ -144,7 +136,7 @@ class Home extends Component {
        if(this.state.filter==='artistButton'){
         return <li id={i}to='/MoreInfo'><ArtistItem id={i} click={this.artistClick}img={e.image[2]['#text']} name={e.name} followers={e.listeners} url={e.url}/></li>
        }else if(this.state.filter==='albumButton'){
-         return <li onClick={((e) => this.artistClick(e))} ><AlbumItem img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url}/></li>
+         return <li id='albumId'onClick={((e) => this.artistClick(e))} ><AlbumItem img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url}/></li>
        }else if(this.state.filter==='songButton'){
         return <li onClick={this.trackClick} to='/MoreInfo'><SongItem img={e.image[2]['#text']} songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url}/></li>
       }

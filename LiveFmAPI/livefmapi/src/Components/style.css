@@ -4,6 +4,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("https://use.typekit.net/org0hfz.css");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -52,16 +53,18 @@ form input{
     width:60%;
     margin-left: 10%;
 }
+
 #listCon{
     /* width:100%; */
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: repeat(3, 1fr);
+grid-column-gap: 30px;
+grid-row-gap: 15px;
     list-style-type: none;
    color: white;
-    /* border: 1px solid purple; */
+    border: 1px solid purple;
+    /* width: 85%; */
     /* display: flex;
     flex-wrap: wrap; */
 }
@@ -70,6 +73,10 @@ ul div{
     /* margin: 2rem; */
     
    
+}
+.item{
+    font-family: asap;
+    font-size: 1rem;
 }
 
 #formButCon{
@@ -125,4 +132,18 @@ a:visited,a{
 form h2{
     margin-bottom: 1.5rem;
     padding-left: 2rem;
+    font-family: rubik;
+    font-size: 1.3rem;
+}
+ul button{
+    font-family: asap;
+    font-size: 1.3rem;
+}
+#t li{
+    font-family: asap;
+font-size: 1rem;
+word-wrap: break-word;
+}
+#t{
+    width:33%;
 }
