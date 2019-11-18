@@ -142,7 +142,7 @@ class Home extends Component {
     let fillContent = this.state.collection.map((e, i) => {
       console.log(e);
       if (this.state.filter === 'artistButton') {
-        return <li id={i} to='/MoreInfo'><ArtistItem id={i} click={this.artistClick} img={e.image[2]['#text']} name={e.name} followers={e.listeners} url={e.url} /></li>
+        return <li id={i} to='/MoreInfo'><ArtistItem id={i} id={e.mbid} click={this.artistClick} img={e.image[2]['#text']} name={e.name} followers={e.listeners} url={e.url} /></li>
       } else if (this.state.filter === 'albumButton') {
         return <li id='albumId' onClick={((e) => this.artistClick(e))} ><AlbumItem id={e.mbid} img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url} /></li>
       } else if (this.state.filter === 'songButton') {
