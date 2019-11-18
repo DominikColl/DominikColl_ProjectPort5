@@ -53,6 +53,7 @@ class Home extends Component {
       }
       console.log(collection);
       this.setState({ collection });
+      return collection;
       console.log('exist');
       console.log(data.results.trackmatches.track[0]);
       let name = data.results.trackmatches.track[0].name;
@@ -73,6 +74,7 @@ class Home extends Component {
       }
       console.log(collection);
       this.setState({ collection });
+      return collection;
       console.log('exist');
       console.log(data.results.artistmatches.artist[0]);
       let name = data.results.artistmatches.artist[0].name;
@@ -115,6 +117,8 @@ class Home extends Component {
       this.fetchArtist(search);
     } else if (this.state.filter === 'songButton') {
       this.fetchSong(search);
+    } else if (this.state.filter === '') {
+      this.fetchAlbum(search);
     }
   }
   //happens when filter button is clicked will be set using id of button clicked

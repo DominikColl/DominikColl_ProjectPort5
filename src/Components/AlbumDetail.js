@@ -13,16 +13,18 @@ const AlbumDetail = (props) => {
   let [published, setPublished] = useState('')
   let [summary, setSummary] = useState('')
   let [tracks, setTracks] = useState([])
+  let [albumImg, setAlbumImg] = useState([])
 
   useEffect(() => {
     console.log(albumId);
     loadAlbumDetail(albumId).then((d) => {
       setAlbumData(d.album);
       setArtist(d.album.artist);
-      setPlayCount(d.album.playCount);
+      setPlayCount(d.album.playcount);
       setPublished(d.album.wiki.published);
       setSummary(d.album.wiki.summary);
-      setTracks(d.album.tracks.track)
+      setTracks(d.album.tracks.track);
+      setAlbumImg(d.album.image[3]['#text']);
       console.log(d.album);
     })
   }, [albumId])
@@ -34,14 +36,18 @@ const AlbumDetail = (props) => {
   return (
     <div class='moreDetail'>
       <Header />
-      <h1>I am Album Detail.</h1>
-      <p>{albumId}</p>
-      <ul>
-        <li>{albumData.name}</li>
-        <li>{artist}</li>
-        <li>{playCount}</li>
-        <li>{published}</li>
-        <li>{summary}</li>
+      {/* <h1>I am Album Detail.</h1>
+      <p>{albumId}</p> */}
+      <ul class='detailList'>
+        <div class='imgCon'>
+          <img src={albumImg} />
+          <li><h1>{albumData.name}</h1></li>
+        </div>
+        <li><h2>By {artist}</h2></li>
+        <li>Plays {playCount}</li>
+        <li>Release Date {published}</li>
+        <li class='bio'> {summary}</li>
+        <h2>Tracks</h2>
         {fillTracks}
       </ul>
     </div>

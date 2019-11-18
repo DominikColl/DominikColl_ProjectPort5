@@ -13,11 +13,13 @@ const SongDetail = (props) => {
     let [albumTitle, setAlbumTitle] = useState('');
     let [playCount, setPlayCount] = useState('');
     let [songBio, setSongBio] = useState('');
+    let [songImg, setSongImg] = useState('');
     useEffect(() => {
         console.log(songId);
         loadSongDetail(songId).then((d) => {
             console.log(d.track);
             setSongData(d.track);
+            setSongImg(d.track.album.image[2]['#text']);
             setArtistName(d.track.artist.name);
             setAlbumTitle(d.track.album.title);
             setPlayCount(d.track.playcount);
@@ -31,15 +33,17 @@ const SongDetail = (props) => {
     return (
         <div class='moreDetail'>
             <Header />
-            <h1>I am Album Detail.</h1>
-            <p>{songId}</p>
-            <ul>
-                {/* name artist release date summary playcount album[title */}
-                <li>{songData.name}</li>
-                <li>{artistName}</li>
-                <li>Album: {albumTitle}</li>
+            {/* <h1>I am Album Detail.</h1>
+            <p>{songId}</p> */}
+            <ul class='detailList'>
+                <div class='imgCon'>
+                    <img src={songImg} />
+                    <li><h1>{songData.name}</h1></li>
+                </div>
+                <li><h2>By {artistName}</h2></li>
+                <li><h2>Album Title: {albumTitle}</h2></li>
                 <li>Play Count: {playCount}</li>
-                <li>Summary: {songBio}</li>
+                <li class='bio'>Summary: {songBio}</li>
             </ul>
         </div>
     )
