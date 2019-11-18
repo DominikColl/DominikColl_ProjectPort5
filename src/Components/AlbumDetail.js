@@ -12,7 +12,7 @@ const AlbumDetail = (props) => {
   let [playCount, setPlayCount] = useState('')
   let [published, setPublished] = useState('')
   let [summary, setSummary] = useState('')
-  let [tracks, setTracks] = useState({})
+  let [tracks, setTracks] = useState([])
 
   useEffect(() => {
     console.log(albumId);
@@ -28,7 +28,9 @@ const AlbumDetail = (props) => {
   }, [albumId])
 
 
-
+  let fillTracks = tracks.map((e, i) => {
+    return <li> {e.name}</li>;
+  })
   return (
     <div class='moreDetail'>
       <Header />
@@ -40,7 +42,7 @@ const AlbumDetail = (props) => {
         <li>{playCount}</li>
         <li>{published}</li>
         <li>{summary}</li>
-        {/* <li>{tracks}</li> */}
+        {fillTracks}
       </ul>
     </div>
   )

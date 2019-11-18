@@ -12,7 +12,7 @@ const SongDetail = (props) => {
     let [artistName, setArtistName] = useState('');
     let [bio, setBio] = useState('');
     let [playCount, setPlayCount] = useState('');
-    let [similarArt, setSimilarArt] = useState({});
+    let [similarArt, setSimilarArt] = useState([]);
     useEffect(() => {
         console.log(artistId);
         loadArtistDetail(artistId).then((d) => {
@@ -24,7 +24,10 @@ const SongDetail = (props) => {
         })
     }, [artistId])
 
-
+    let fillSimilarArt = similarArt.map((e, i) => {
+        console.log(e.name);
+        return <li>{e.name}</li>
+    })
 
     return (
         <div class='moreDetail'>
@@ -35,7 +38,7 @@ const SongDetail = (props) => {
                 <li>{artistName}</li>
                 <li>{bio}</li>
                 <li>{playCount}</li>
-                {/* <li>{similarArt}</li> */}
+                {fillSimilarArt}
             </ul>
         </div>
     )
