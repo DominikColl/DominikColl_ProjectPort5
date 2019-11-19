@@ -26,7 +26,7 @@ class Home extends Component {
   async fetchAlbum(value) {
     let collection = [];
     console.log(value);
-    const res = await fetch(`http://ws.audioscrobbler.com/2.0/?method=album.search&album=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
+    const res = await fetch(`//ws.audioscrobbler.com/2.0/?method=album.search&album=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
     const data = await res.json()
     //if data results exist
     if (data.results) {
@@ -46,7 +46,7 @@ class Home extends Component {
   //fetchs song based of search value
   async fetchSong(value) {
     let collection = [];
-    const res = await fetch(`http://ws.audioscrobbler.com/2.0/?method=track.search&track=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
+    const res = await fetch(`//ws.audioscrobbler.com/2.0/?method=track.search&track=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
     const data = await res.json()
     console.log(data);
     if (data.results) {
@@ -67,7 +67,7 @@ class Home extends Component {
   //fetchs artist based on search value
   async fetchArtist(value) {
     let collection = [];
-    const res = await fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
+    const res = await fetch(`//ws.audioscrobbler.com/2.0/?method=artist.search&artist=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
     const data = await res.json()
     console.log(data);
     if (data.results) {
@@ -87,14 +87,14 @@ class Home extends Component {
   }
   //fetchs most popular artist
   async fetchTopArtist() {
-    const res = await fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
+    const res = await fetch(`//ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
     const data = await res.json()
     console.log(data);
   }
   //fetchs most popular tracks
   async fetchTopTracks() {
     let topTracks = [];
-    const res = await fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
+    const res = await fetch(`//ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
     const data = await res.json()
     // console.log(data);
     for (let i = 0; i < 9; i++) {
