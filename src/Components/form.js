@@ -7,6 +7,7 @@ const form = props => {
         <div>
             <form onSubmit={props.click}>
                 <div id='fDiv'>
+                    {/* update to deploy */}
                     {/* <h2>Search</h2> */}
                     {/* changes based off of state */}
                     <h2>Filtering: {props.filter}</h2>
@@ -19,9 +20,9 @@ const form = props => {
                 <ul id='formButCon'>
                     {/* passing onClick event to be placed in page */}
                     {/* using id as identifier in js */}
-                    <li><button class='formBut' onClick={props.btnClick} type='button' id='Artist'>Artist</button></li>
-                    <li><button class='formBut' onClick={props.btnClick} type='button' id='Song'>Song</button></li>
-                    <li><button class='formBut' onClick={props.btnClick} type='button' id='Album'>Album</button></li>
+                    <li><button className='formBut' onClick={props.btnClick} type='button' id='Artist'>Artist</button></li>
+                    <li><button className='formBut' onClick={props.btnClick} type='button' id='Song'>Song</button></li>
+                    <li><button className='formBut' onClick={props.btnClick} type='button' id='Album'>Album</button></li>
                 </ul>
             </form>
         </div>

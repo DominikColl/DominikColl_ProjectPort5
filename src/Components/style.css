@@ -48,10 +48,12 @@ form{
     border:1px solid red;
     width:30%;
     margin: 0 auto;
+    box-shadow: 0px 3px 5px 0px #ad2514;
 }
 form input{
     width:60%;
     margin-left: 10%;
+    box-shadow: 0px 3px 5px 0px #ad2514;
 }
 
 #listCon{
@@ -92,6 +94,7 @@ form{
     background-color: #ff3a20;
     /* padding:2rem; */
 }
+
 #fDiv{
     padding:2rem;
 }
@@ -106,10 +109,12 @@ li button{
     padding:.5rem;
 }
 input{
-    padding: 1rem;
+     padding: .9rem;
+    padding-top: 1rem; 
     background-color: #ad2614;
     border:none;
     color:white;
+    font-size: 1rem;
 }
 ::placeholder{
     color: white;
@@ -127,6 +132,9 @@ nav h1{
 #searchBut{
     background-color: #ad2614;
     border:none;
+    color: white;
+    font-size: 1rem;
+    box-shadow: 0px 3px 5px 0px #ad2514;
 
 }
 a:visited,a{

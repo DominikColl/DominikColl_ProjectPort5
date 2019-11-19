@@ -29,22 +29,22 @@ const SongDetail = (props) => {
         }).then((e) => {
             console.log(songData);
         })
-
+        // add song data to get rid of warning at the cost of a infnite loop making fetch calls
     }, [songId])
     return (
-        <div class='moreDetail'>
+        <div className='moreDetail'>
             <Header />
             {/* <h1>I am Album Detail.</h1>
             <p>{songId}</p> */}
-            <ul class='detailList'>
-                <div class='imgCon'>
-                    <img src={songImg} />
+            <ul className='detailList'>
+                <div className='imgCon'>
+                    <img src={songImg} alt='Song Img' />
                     <li><h1>{songData.name}</h1></li>
                 </div>
                 <li><h2>By {artistName}</h2></li>
                 <li><h2>Album Title: {albumTitle}</h2></li>
-                <li>Play Count: {parseFloat(playCount).toLocaleString('en')}</li>
-                <li class='bio'>Summary: {songBio}</li>
+                <li><h2>Play Count:</h2> {parseFloat(playCount).toLocaleString('en')}</li>
+                <li className='bio'>Summary: {songBio}</li>
             </ul>
         </div>
     )

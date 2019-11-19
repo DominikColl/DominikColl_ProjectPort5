@@ -3,11 +3,11 @@ import Form from '../Components/form';
 import AlbumItem from '../Components/albumItem';
 import SongItem from '../Components/songItem';
 import ArtistItem from '../Components/artistItem';
-import TopCharts from '../Components/topChartsItem';
+
 import Header from '../Components/header';
-import { NavLink } from 'react-router-dom';
+
 import '../Components/style.css';
-import { artistClickk } from '../Page/Code';
+
 //modal lib
 import swal from 'sweetalert';
 
@@ -25,9 +25,10 @@ class Home extends Component {
   //fetchs album based of search value
   async fetchAlbum(value) {
     let collection = [];
+    let data = {};
     console.log(value);
     const res = await fetch(`//ws.audioscrobbler.com/2.0/?method=album.search&album=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
-    const data = await res.json()
+    data = await res.json()
     //if data results exist
     if (data.results) {
       //this is gonna be a problem
@@ -56,17 +57,18 @@ class Home extends Component {
       console.log(collection);
       this.setState({ collection });
       return collection;
-      console.log('exist');
-      console.log(data.results.trackmatches.track[0]);
-      let name = data.results.trackmatches.track[0].name;
-      let other = 'Listeners: ' + data.results.trackmatches.track[0].listeners;
-      this.setState({ name });
-      this.setState({ other });
+      //  console.log('exist');
+      // console.log(data.results.trackmatches.track[0]);
+      // let name = data.results.trackmatches.track[0].name;
+      // let other = 'Listeners: ' + data.results.trackmatches.track[0].listeners;
+      // this.setState({ name });
+      // this.setState({ other });
     }
   }
   //fetchs artist based on search value
   async fetchArtist(value) {
     let collection = [];
+
     const res = await fetch(`//ws.audioscrobbler.com/2.0/?method=artist.search&artist=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
     const data = await res.json()
     console.log(data);
@@ -77,12 +79,12 @@ class Home extends Component {
       console.log(collection);
       this.setState({ collection });
       return collection;
-      console.log('exist');
-      console.log(data.results.artistmatches.artist[0]);
-      let name = data.results.artistmatches.artist[0].name;
-      let other = 'Listeners: ' + data.results.artistmatches.artist[0].listeners;
-      this.setState({ name });
-      this.setState({ other });
+      // console.log('exist');
+      // console.log(data.results.artistmatches.artist[0]);
+      // let name = data.results.artistmatches.artist[0].name;
+      // let other = 'Listeners: ' + data.results.artistmatches.artist[0].listeners;
+      // this.setState({ name });
+      // this.setState({ other });
     }
   }
   //fetchs most popular artist
@@ -102,7 +104,7 @@ class Home extends Component {
     }
     console.log('from top charts collection');
     //  console.log(collection)
-    //  this.setState({topTracks});
+    this.setState({ topTracks });
     // return collection;
   }
 
@@ -121,7 +123,8 @@ class Home extends Component {
       this.fetchSong(search);
     } else if (this.state.filter === '') {
       // modal popup if filter is not selected
-      swal({ icon: 'warning', text: "To use the app to its full potential choose a filter" });
+      swal({ icon: 'warning', text: "To use the app to its full potential choose a filter" });;
+
       let bigCollection = [];
       bigCollection.push(this.fetchAlbum(search));
       bigCollection.push(this.fetchArtist(search));
@@ -151,26 +154,32 @@ class Home extends Component {
   //<NavLink onClick={this.itemClick} to='/MoreInfo'><AlbumItem img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url}/></NavLink>
   render() {
     //filling content based off what the filter is getting data from collection in state set when fetching data 
-    let modal;
     let fillContent = this.state.collection.map((e, i) => {
       console.log(e);
       if (this.state.filter === 'Artist') {
-        return <li id={i} to='/MoreInfo'><ArtistItem id={i} id={e.mbid} click={this.artistClick} img={e.image[2]['#text']} name={e.name} followers={e.listeners} url={e.url} /></li>
+        if (e.mbid) {
+          return <ArtistItem key={i} id={e.mbid} click={this.artistClick} img={e.image[2]['#text']} name={e.name} followers={e.listeners} url={e.url} />
+        }
       } else if (this.state.filter === 'Album') {
-        return <li id='albumId' onClick={((e) => this.artistClick(e))} ><AlbumItem id={e.mbid} img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url} /></li>
+        if (e.mbid) {
+          return <AlbumItem key={i} id={e.mbid} img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url} />
+        }
       } else if (this.state.filter === 'Song') {
-        return <li onClick={this.trackClick} to='/MoreInfo'><SongItem img={e.image[2]['#text']} id={e.mbid} songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url} /></li>
+        if (e.mbid) {
+          return <SongItem key={i} img={e.image[2]['#text']} id={e.mbid} songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url} />
+        }
       } else if (this.state.filter === '') {
         console.log(e);
         // if no filter return what is returned by all three
-        return <div><img src={e.image[2]['#text']} /><li>{e.name}</li> <li>{e.artist}</li></div>
+        return <div key={i}><img src={e.image[2]['#text']} alt='Search related img' /><li>{e.name}</li> <li>{e.artist}</li></div>
       }
+      return '';
     })
     return (
       <div>
         <Header click={this.homeClick} />
         <Form btnClick={this.btnClick} filter={this.state.filter} click={this.click} />
-        {modal}
+        {/* {modal} */}
         <ul id='listCon'>
           {/* calling function */}
           {fillContent}

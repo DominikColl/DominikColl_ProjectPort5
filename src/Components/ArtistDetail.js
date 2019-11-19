@@ -28,22 +28,22 @@ const SongDetail = (props) => {
     }, [artistId])
     //looping throught similar artists to dispaly later
     let fillSimilarArt = similarArt.map((e, i) => {
-        return <li>{e.name}</li>
+        return <li key={i}>{e.name}</li>
     })
 
     return (
-        <div class='moreDetail'>
+        <div className='moreDetail'>
             <Header />
             {/* <h1>I am Album Detail.</h1>
             <p>{artistId}</p> */}
-            <ul class='detailList'>
-                <div class='imgCon'>
-                    <img src={pic} />
+            <ul className='detailList'>
+                <div className='imgCon'>
+                    <img src={pic} alt='Artist img' />
                     <li><h1>{artistName}</h1></li>
                 </div>
-                <li class='bio'>{bio}</li>
+                <li className='bio'>{bio}</li>
                 {/* parses float to a readable number with commas */}
-                <li>Plays: {parseFloat(playCount).toLocaleString('en')}</li>
+                <li><h2>Plays:</h2> {parseFloat(playCount).toLocaleString('en')}</li>
                 <h2>Similar Artist</h2>
                 {fillSimilarArt}
             </ul>
