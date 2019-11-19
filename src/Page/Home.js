@@ -123,7 +123,7 @@ class Home extends Component {
       this.fetchSong(search);
     } else if (this.state.filter === '') {
       // modal popup if filter is not selected
-      swal({ icon: 'warning', text: "To use the app to its full potential choose a filter" });;
+      swal({ icon: 'warning', text: "To use the app to its full potential choose a filter" });
 
       let bigCollection = [];
       bigCollection.push(this.fetchAlbum(search));

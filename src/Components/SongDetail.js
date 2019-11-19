@@ -24,7 +24,9 @@ const SongDetail = (props) => {
             setArtistName(d.track.artist.name);
             setAlbumTitle(d.track.album.title);
             setPlayCount(d.track.playcount);
-            setSongBio(d.track.wiki.summary);
+            if (d.track.wiki) {
+                setSongBio(d.track.wiki.summary);
+            }
             console.log(d.track.artist.name);
         }).then((e) => {
             console.log(songData);
