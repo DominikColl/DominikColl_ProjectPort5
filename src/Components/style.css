@@ -37,7 +37,7 @@ ol, ul {
 	list-style: none;
 }
 /* RESET OVER */
-/* removes chromes default blue border on focused inputs */
+/* removes chromes default blue border on focused inputs Work cited https://stackoverflow.com/questions/1457849/how-to-remove-the-border-highlight-on-an-input-text-element */
 input:focus,
 select:focus,
 textarea:focus,
@@ -64,6 +64,9 @@ body{
 
 }
 .formBut:hover{
+    color:white;
+}
+.formBut:hover{
     background-color: #CC2D18;
 }
 form{
@@ -83,10 +86,10 @@ form input{
 #listCon{
     /* width:100%; */
     display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-template-rows: repeat(3, 1fr);
-grid-column-gap: 30px;
-grid-row-gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 15px;
     list-style-type: none;
    color: #F5F7F4;
    margin-top: 1rem;
@@ -134,7 +137,7 @@ li button{
     padding:.5rem;
 }
 input{
-     padding: .9rem;
+    padding: .9rem;
     padding-top: 1rem; 
     background-color: #ad2614;
     border:none;

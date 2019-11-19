@@ -24,9 +24,11 @@ class Home extends Component {
 
   //fetchs album based of search value
   async fetchAlbum(value) {
+    //collection to be set to state later in fucntion
     let collection = [];
 
     console.log(value);
+    //removed http for cors issue github pages
     const res = await fetch(`//ws.audioscrobbler.com/2.0/?method=album.search&album=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
     const data = await res.json()
     //if data results exist
@@ -37,6 +39,7 @@ class Home extends Component {
       }
       //collection=data.results.albummatches.album;
       console.log(collection);
+      //setting state
       this.setState({ collection });
       console.log('exist');
       console.log(data.results.albummatches.album[0]);
@@ -113,14 +116,17 @@ class Home extends Component {
   click = () => {
     this.fetchTopTracks();
     console.log(this.state.filter);
+    //grabbing input value 
     let search = document.querySelector('input').value;
     this.setState({ search });
+    //checking filter/button pressed
     if (this.state.filter === 'Album') {
       this.fetchAlbum(search);
     } else if (this.state.filter === 'Artist') {
       this.fetchArtist(search);
     } else if (this.state.filter === 'Song') {
       this.fetchSong(search);
+      //if filter is not set run all three and return value into big Collection
     } else if (this.state.filter === '') {
       // modal popup if filter is not selected
       swal({ icon: 'warning', text: "To use the app to its full potential choose a filter" });
@@ -144,19 +150,21 @@ class Home extends Component {
     //artistClickk();
   }
 
-  //  returns home and clears input fields
+  //  returns home and clears input fields when escape hatch is clicked
   homeClick = () => {
     let collection = [];
     document.querySelector('input').value = '';
     this.setState({ collection });
   }
-  //<NavLink onClick={this.itemClick} to='/MoreInfo'><AlbumItem img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url}/></NavLink>
+
   render() {
     //filling content based off what the filter is getting data from collection in state set when fetching data 
     let fillContent = this.state.collection.map((e, i) => {
       console.log(e);
+      //checking filter and only displaying items with a mbid 
       if (this.state.filter === 'Artist') {
         if (e.mbid) {
+          // calling component based on search filter
           return <ArtistItem key={i} id={e.mbid} click={this.artistClick} img={e.image[2]['#text']} name={e.name} followers={e.listeners} url={e.url} />
         }
       } else if (this.state.filter === 'Album') {
@@ -176,11 +184,12 @@ class Home extends Component {
     })
     return (
       <div>
+        {/* calling imported component setting props */}
         <Header click={this.homeClick} />
         <Form btnClick={this.btnClick} filter={this.state.filter} click={this.click} />
         {/* {modal} */}
         <ul id='listCon'>
-          {/* calling function */}
+          {/* calling function to map through collection*/}
           {fillContent}
         </ul>
       </div>
