@@ -25,10 +25,10 @@ class Home extends Component {
   //fetchs album based of search value
   async fetchAlbum(value) {
     let collection = [];
-    let data = {};
+
     console.log(value);
     const res = await fetch(`//ws.audioscrobbler.com/2.0/?method=album.search&album=${value}&api_key=77730a79e57e200de8fac0acd06a6bb6&format=json`)
-    data = await res.json()
+    const data = await res.json()
     //if data results exist
     if (data.results) {
       //this is gonna be a problem
@@ -124,7 +124,6 @@ class Home extends Component {
     } else if (this.state.filter === '') {
       // modal popup if filter is not selected
       swal({ icon: 'warning', text: "To use the app to its full potential choose a filter" });
-
       let bigCollection = [];
       bigCollection.push(this.fetchAlbum(search));
       bigCollection.push(this.fetchArtist(search));

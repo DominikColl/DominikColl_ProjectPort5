@@ -1,12 +1,12 @@
 import React from 'react';
-import { FaHome } from "react-icons/fa";
+import { MdSpeaker } from "react-icons/md";
 import './style.css';
 import { NavLink } from 'react-router-dom';
 
 const header = props => {
     return (
         <nav id="nav">
-            <h1 id='logo'> <NavLink to='/'> <FaHome onClick={props.click} /></NavLink></h1>
+            <h1 id='logo'> <NavLink to='/'> <MdSpeaker onClick={props.click} /></NavLink></h1>
         </nav>
     );
 }

@@ -37,23 +37,47 @@ ol, ul {
 	list-style: none;
 }
 /* RESET OVER */
+/* removes chromes default blue border on focused inputs */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+/* My css */
 body{
-    background-color: white;
+    background-color: #F5F7F4;
 }
 #formButCon{
     display: flex;
     list-style-type: none;
+   
+}
+.formBut{
+    border:none;
+    background-color: #ad2514;
+    color:#F5F7F4;
+    /* box-shadow: 0px 12px 13px 0px rgba(145,26,13,0.4); */
+    /* two layers of shadow making it look better?  */
+    box-shadow: 0px 5px 10px rgba(145,26,13,0.1),0px 15px 40px rgba(145,26,13,0.3);
+    border-radius: .5%;
+
+}
+.formBut:hover{
+    background-color: #CC2D18;
 }
 form{
     border:1px solid red;
     width:30%;
     margin: 0 auto;
-    box-shadow: 0px 3px 5px 0px #ad2514;
+    /* box-shadow: 0px 3px 5px 0px #ad2514; */
+    border-radius: .5%;
 }
 form input{
     width:60%;
     margin-left: 10%;
     box-shadow: 0px 3px 5px 0px #ad2514;
+    border-radius: .5%;
 }
 
 #listCon{
@@ -64,7 +88,7 @@ grid-template-rows: repeat(3, 1fr);
 grid-column-gap: 30px;
 grid-row-gap: 15px;
     list-style-type: none;
-   color: white;
+   color: #F5F7F4;
    margin-top: 1rem;
    padding-left: .5rem;
     /* border: 1px solid purple; */
@@ -85,6 +109,7 @@ ul div{
 
 #formButCon{
   display: flex;
+  
 }
 #nav{
     background-color: #ff3a20;
@@ -113,11 +138,11 @@ input{
     padding-top: 1rem; 
     background-color: #ad2614;
     border:none;
-    color:white;
+    color:#F5F7F4;
     font-size: 1rem;
 }
 ::placeholder{
-    color: white;
+    color: #F5F7F4;
     font-size: .8rem;
 }
 nav{
@@ -132,26 +157,27 @@ nav h1{
 #searchBut{
     background-color: #ad2614;
     border:none;
-    color: white;
+    color: #F5F7F4;
     font-size: 1rem;
     box-shadow: 0px 3px 5px 0px #ad2514;
-
+    border-radius: .5%;
 }
 a:visited,a{
-    color:white;
+    color:#F5F7F4;
 }
 form h2{
     margin-bottom: 1.5rem;
     padding-left: 2rem;
     font-family: rubik;
     font-size: 1.3rem;
+    color: #F5F7F4;
 }
 ul button{
     font-family: asap;
     font-size: 1.3rem;
 }
 .moreDetail{
-    color: white;
+    color: #F5F7F4;
 }
 #t li{
     font-family: asap;
