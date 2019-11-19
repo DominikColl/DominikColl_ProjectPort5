@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/DominikColl_ProjectPort5/static/css/main.5d3f4938.chunk.css",
-    "main.js": "/DominikColl_ProjectPort5/static/js/main.c1611140.chunk.js",
-    "main.js.map": "/DominikColl_ProjectPort5/static/js/main.c1611140.chunk.js.map",
+    "main.js": "/DominikColl_ProjectPort5/static/js/main.bdb2b4c2.chunk.js",
+    "main.js.map": "/DominikColl_ProjectPort5/static/js/main.bdb2b4c2.chunk.js.map",
     "runtime-main.js": "/DominikColl_ProjectPort5/static/js/runtime-main.2ea971cf.js",
     "runtime-main.js.map": "/DominikColl_ProjectPort5/static/js/runtime-main.2ea971cf.js.map",
     "static/js/2.44e9f12f.chunk.js": "/DominikColl_ProjectPort5/static/js/2.44e9f12f.chunk.js",
     "static/js/2.44e9f12f.chunk.js.map": "/DominikColl_ProjectPort5/static/js/2.44e9f12f.chunk.js.map",
     "index.html": "/DominikColl_ProjectPort5/index.html",
-    "precache-manifest.a93fe9610cc03dddc7467be85cc3953d.js": "/DominikColl_ProjectPort5/precache-manifest.a93fe9610cc03dddc7467be85cc3953d.js",
+    "precache-manifest.caf51ef4c56a3e6467f074162b9c9b31.js": "/DominikColl_ProjectPort5/precache-manifest.caf51ef4c56a3e6467f074162b9c9b31.js",
     "service-worker.js": "/DominikColl_ProjectPort5/service-worker.js",
     "static/css/main.5d3f4938.chunk.css.map": "/DominikColl_ProjectPort5/static/css/main.5d3f4938.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.2ea971cf.js",
     "static/js/2.44e9f12f.chunk.js",
     "static/css/main.5d3f4938.chunk.css",
-    "static/js/main.c1611140.chunk.js"
+    "static/js/main.bdb2b4c2.chunk.js"
   ]
 }
