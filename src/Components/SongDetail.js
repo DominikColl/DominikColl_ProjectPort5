@@ -17,6 +17,7 @@ const SongDetail = (props) => {
     useEffect(() => {
         console.log(songId);
         loadSongDetail(songId).then((d) => {
+            //setting states
             console.log(d.track);
             setSongData(d.track);
             setSongImg(d.track.album.image[2]['#text']);

@@ -8,6 +8,7 @@ import Header from '../Components/header';
 import { NavLink } from 'react-router-dom';
 import '../Components/style.css';
 import { artistClickk } from '../Page/Code';
+//modal lib
 import swal from 'sweetalert';
 
 //project built using livefm api and spotify/youtube playback
@@ -119,7 +120,8 @@ class Home extends Component {
     } else if (this.state.filter === 'Song') {
       this.fetchSong(search);
     } else if (this.state.filter === '') {
-      swal("To use the app to its full potential choose a filter");
+      // modal popup if filter is not selected
+      swal({ icon: 'warning', text: "To use the app to its full potential choose a filter" });
       let bigCollection = [];
       bigCollection.push(this.fetchAlbum(search));
       bigCollection.push(this.fetchArtist(search));
@@ -160,7 +162,7 @@ class Home extends Component {
         return <li onClick={this.trackClick} to='/MoreInfo'><SongItem img={e.image[2]['#text']} id={e.mbid} songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url} /></li>
       } else if (this.state.filter === '') {
         console.log(e);
-        // modal = swal("Hello world!");
+        // if no filter return what is returned by all three
         return <div><img src={e.image[2]['#text']} /><li>{e.name}</li> <li>{e.artist}</li></div>
       }
     })
@@ -173,10 +175,6 @@ class Home extends Component {
           {/* calling function */}
           {fillContent}
         </ul>
-
-        {/* <Route exact path='/MoreInfo' render={()=>MoreInfo}/>
-           <Route exact path= '/' component={Home}/>
-                <Route exact path='/Home' component={Home}/> */}
       </div>
     );
   }

@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom'
 import { loadArtistDetail } from '../Page/Code'
 import './style.css';
 import Header from './header';
-import { utimesSync } from 'fs';
 
 const SongDetail = (props) => {
 
@@ -18,7 +17,7 @@ const SongDetail = (props) => {
     useEffect(() => {
         console.log(artistId);
         loadArtistDetail(artistId).then((d) => {
-            console.log(d.artist);
+            //setting states
             setArtistName(d.artist.name);
             setBio(d.artist.bio.summary);
             setPlayCount(d.artist.stats.playcount);
@@ -27,7 +26,7 @@ const SongDetail = (props) => {
             console.log(d.artist.image[2]['text'])
         })
     }, [artistId])
-
+    //looping throught similar artists to dispaly later
     let fillSimilarArt = similarArt.map((e, i) => {
         return <li>{e.name}</li>
     })
@@ -43,6 +42,7 @@ const SongDetail = (props) => {
                     <li><h1>{artistName}</h1></li>
                 </div>
                 <li class='bio'>{bio}</li>
+                {/* parses float to a readable number with commas */}
                 <li>Plays: {parseFloat(playCount).toLocaleString('en')}</li>
                 <h2>Similar Artist</h2>
                 {fillSimilarArt}

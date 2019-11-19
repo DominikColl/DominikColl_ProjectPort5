@@ -4,7 +4,7 @@ import { loadAlbumDetail } from '../Page/Code'
 import './style.css';
 import Header from './header';
 const AlbumDetail = (props) => {
-
+  //states
   let { albumId } = useParams();
   //artist playcount published summary tracksonalbum
   let [albumData, setAlbumData] = useState({})
@@ -18,6 +18,7 @@ const AlbumDetail = (props) => {
   useEffect(() => {
     console.log(albumId);
     loadAlbumDetail(albumId).then((d) => {
+      //getting data setting states
       setAlbumData(d.album);
       setArtist(d.album.artist);
       setPlayCount(d.album.playcount);
@@ -29,11 +30,12 @@ const AlbumDetail = (props) => {
     })
   }, [albumId])
 
-
+  //looping through tracks on album to display
   let fillTracks = tracks.map((e, i) => {
     return <li> {e.name}</li>;
   })
   return (
+
     <div class='moreDetail'>
       <Header />
       {/* <h1>I am Album Detail.</h1>
