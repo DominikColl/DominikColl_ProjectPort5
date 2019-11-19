@@ -8,6 +8,7 @@ import Header from '../Components/header';
 import { NavLink } from 'react-router-dom';
 import '../Components/style.css';
 import { artistClickk } from '../Page/Code';
+import swal from 'sweetalert';
 
 //project built using livefm api and spotify/youtube playback
 // Reacticons used and css Reset came from http://meyerweb.com/eric/tools/css/reset/ 
@@ -118,6 +119,7 @@ class Home extends Component {
     } else if (this.state.filter === 'Song') {
       this.fetchSong(search);
     } else if (this.state.filter === '') {
+      swal("To use the app to its full potential choose a filter");
       let bigCollection = [];
       bigCollection.push(this.fetchAlbum(search));
       bigCollection.push(this.fetchArtist(search));
@@ -147,6 +149,7 @@ class Home extends Component {
   //<NavLink onClick={this.itemClick} to='/MoreInfo'><AlbumItem img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url}/></NavLink>
   render() {
     //filling content based off what the filter is getting data from collection in state set when fetching data 
+    let modal;
     let fillContent = this.state.collection.map((e, i) => {
       console.log(e);
       if (this.state.filter === 'Artist') {
@@ -157,6 +160,7 @@ class Home extends Component {
         return <li onClick={this.trackClick} to='/MoreInfo'><SongItem img={e.image[2]['#text']} id={e.mbid} songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url} /></li>
       } else if (this.state.filter === '') {
         console.log(e);
+        // modal = swal("Hello world!");
         return <div><img src={e.image[2]['#text']} /><li>{e.name}</li> <li>{e.artist}</li></div>
       }
     })
@@ -164,6 +168,7 @@ class Home extends Component {
       <div>
         <Header click={this.homeClick} />
         <Form btnClick={this.btnClick} filter={this.state.filter} click={this.click} />
+        {modal}
         <ul id='listCon'>
           {/* calling function */}
           {fillContent}
