@@ -86,6 +86,7 @@ ul div{
 }
 #nav{
     background-color: #ff3a20;
+    box-shadow: 0px 3px 5px 0px #ad2514;
 }
 form{
     background-color: #ff3a20;
@@ -154,9 +155,12 @@ ul button{
 }
 .detailList{
     width:75%;
-    border:1px solid red;
+   /* x border:1px solid red; */
     margin: 0 auto;
     font-family: asap;
+    background-color: #ad2514;
+    padding: .5rem;
+    box-shadow: 0px 3px 5px 0px #ad2514;
 }
 .detailList li{
     margin: .5rem;
@@ -175,4 +179,11 @@ ul button{
 }
 .imgCon{
     display: flex;
+    
+}
+.imgCon img{
+    margin: .5rem;
+}
+#hideThis{
+    display: none;
 }

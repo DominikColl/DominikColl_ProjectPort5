@@ -42,7 +42,7 @@ const SongDetail = (props) => {
                 </div>
                 <li><h2>By {artistName}</h2></li>
                 <li><h2>Album Title: {albumTitle}</h2></li>
-                <li>Play Count: {playCount}</li>
+                <li>Play Count: {parseFloat(playCount).toLocaleString('en')}</li>
                 <li class='bio'>Summary: {songBio}</li>
             </ul>
         </div>

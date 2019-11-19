@@ -24,7 +24,7 @@ const SongDetail = (props) => {
             setPlayCount(d.artist.stats.playcount);
             setSimilarArt(d.artist.similar.artist);
             setPic(d.artist.image[2]['#text']);
-            // console.log(d.artist.image[2]['text'])
+            console.log(d.artist.image[2]['text'])
         })
     }, [artistId])
 
@@ -43,7 +43,7 @@ const SongDetail = (props) => {
                     <li><h1>{artistName}</h1></li>
                 </div>
                 <li class='bio'>{bio}</li>
-                <li>Plays: {playCount}</li>
+                <li>Plays: {parseFloat(playCount).toLocaleString('en')}</li>
                 <h2>Similar Artist</h2>
                 {fillSimilarArt}
             </ul>

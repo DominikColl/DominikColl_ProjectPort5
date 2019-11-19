@@ -44,7 +44,8 @@ const AlbumDetail = (props) => {
           <li><h1>{albumData.name}</h1></li>
         </div>
         <li><h2>By {artist}</h2></li>
-        <li>Plays {playCount}</li>
+        {/* toLocaleString will format long numbers to make them readable very cool */}
+        <li>Plays {parseFloat(playCount).toLocaleString('en')}</li>
         <li>Release Date {published}</li>
         <li class='bio'> {summary}</li>
         <h2>Tracks</h2>

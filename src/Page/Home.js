@@ -13,7 +13,7 @@ import { artistClickk } from '../Page/Code';
 // Reacticons used and css Reset came from http://meyerweb.com/eric/tools/css/reset/ 
 class Home extends Component {
   //state 
-  state = { search: '', name: 'name', other: 'other', filter: '', collection: [], topTracks: [], current: [] }
+  state = { search: '', name: 'name', other: 'other', filter: '', collection: [], topTracks: [], current: [], bigCollection: [] }
   //happens when all compents load in
   componentDidMount() {
     // this.fetchTopTracks();
@@ -111,14 +111,18 @@ class Home extends Component {
     console.log(this.state.filter);
     let search = document.querySelector('input').value;
     this.setState({ search });
-    if (this.state.filter === 'albumButton') {
+    if (this.state.filter === 'Album') {
       this.fetchAlbum(search);
-    } else if (this.state.filter === 'artistButton') {
+    } else if (this.state.filter === 'Artist') {
       this.fetchArtist(search);
-    } else if (this.state.filter === 'songButton') {
+    } else if (this.state.filter === 'Song') {
       this.fetchSong(search);
     } else if (this.state.filter === '') {
-      this.fetchAlbum(search);
+      let bigCollection = [];
+      bigCollection.push(this.fetchAlbum(search));
+      bigCollection.push(this.fetchArtist(search));
+      bigCollection.push(this.fetchSong(search));
+      this.setState({ bigCollection })
     }
   }
   //happens when filter button is clicked will be set using id of button clicked
@@ -145,18 +149,21 @@ class Home extends Component {
     //filling content based off what the filter is getting data from collection in state set when fetching data 
     let fillContent = this.state.collection.map((e, i) => {
       console.log(e);
-      if (this.state.filter === 'artistButton') {
+      if (this.state.filter === 'Artist') {
         return <li id={i} to='/MoreInfo'><ArtistItem id={i} id={e.mbid} click={this.artistClick} img={e.image[2]['#text']} name={e.name} followers={e.listeners} url={e.url} /></li>
-      } else if (this.state.filter === 'albumButton') {
+      } else if (this.state.filter === 'Album') {
         return <li id='albumId' onClick={((e) => this.artistClick(e))} ><AlbumItem id={e.mbid} img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url} /></li>
-      } else if (this.state.filter === 'songButton') {
+      } else if (this.state.filter === 'Song') {
         return <li onClick={this.trackClick} to='/MoreInfo'><SongItem img={e.image[2]['#text']} id={e.mbid} songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url} /></li>
+      } else if (this.state.filter === '') {
+        console.log(e);
+        return <div><img src={e.image[2]['#text']} /><li>{e.name}</li> <li>{e.artist}</li></div>
       }
     })
     return (
       <div>
         <Header click={this.homeClick} />
-        <Form btnClick={this.btnClick} click={this.click} />
+        <Form btnClick={this.btnClick} filter={this.state.filter} click={this.click} />
         <ul id='listCon'>
           {/* calling function */}
           {fillContent}
