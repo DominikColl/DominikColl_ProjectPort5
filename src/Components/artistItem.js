@@ -6,12 +6,12 @@ const artistItem = props => {
                 <div>
                         <li><img src={props.img} alt='Artist Img' /></li>
                         <li>
-                                <Link to={"/artist/" + props.id}>
+                                <Link className='link' to={"/artist/" + props.id}>
                                         Artist Name:{props.name}
                                 </Link>
                         </li>
                         <li className='item' id='artistItem'>Followers:{props.followers}</li>
-                        <li className='item' id='artistItem'>More Info:{props.url}</li>
+                        {/* <li className='item' id='artistItem'>More Info:{props.url}</li> */}
                 </div>
         );
 }

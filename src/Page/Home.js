@@ -3,11 +3,8 @@ import Form from '../Components/form';
 import AlbumItem from '../Components/albumItem';
 import SongItem from '../Components/songItem';
 import ArtistItem from '../Components/artistItem';
-
 import Header from '../Components/header';
-
 import '../Components/style.css';
-
 //modal lib
 import swal from 'sweetalert';
 
@@ -15,7 +12,7 @@ import swal from 'sweetalert';
 // Reacticons used and css Reset came from http://meyerweb.com/eric/tools/css/reset/ 
 class Home extends Component {
   //state 
-  state = { search: '', name: 'name', other: 'other', filter: '', collection: [], topTracks: [], current: [], bigCollection: [] }
+  state = { search: '', name: 'name', other: 'other', filter: 'Album', collection: [], topTracks: [], current: [], bigCollection: [] }
   //happens when all compents load in
   componentDidMount() {
     // this.fetchTopTracks();
@@ -60,12 +57,6 @@ class Home extends Component {
       console.log(collection);
       this.setState({ collection });
       return collection;
-      //  console.log('exist');
-      // console.log(data.results.trackmatches.track[0]);
-      // let name = data.results.trackmatches.track[0].name;
-      // let other = 'Listeners: ' + data.results.trackmatches.track[0].listeners;
-      // this.setState({ name });
-      // this.setState({ other });
     }
   }
   //fetchs artist based on search value
@@ -82,12 +73,6 @@ class Home extends Component {
       console.log(collection);
       this.setState({ collection });
       return collection;
-      // console.log('exist');
-      // console.log(data.results.artistmatches.artist[0]);
-      // let name = data.results.artistmatches.artist[0].name;
-      // let other = 'Listeners: ' + data.results.artistmatches.artist[0].listeners;
-      // this.setState({ name });
-      // this.setState({ other });
     }
   }
   //fetchs most popular artist

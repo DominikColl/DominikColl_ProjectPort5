@@ -82,22 +82,44 @@ form input{
     box-shadow: 0px 3px 5px 0px #ad2514;
     border-radius: .5%;
 }
-
+.link{
+    font-size: 1.3rem;
+    text-decoration: none;
+    padding:.3rem;
+    background-color: #CC2D18;
+    border-radius: 2%;
+    color: #F5F7F4;
+    font-family: rubik;
+    line-height: 39px;
+}
+.link:hover{
+    color:#CC2D18;
+    background-color: #F5F7F4;
+}
 #listCon{
     /* width:100%; */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    grid-column-gap: 30px;
-    grid-row-gap: 15px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
     list-style-type: none;
    color: #F5F7F4;
    margin-top: 1rem;
    padding-left: .5rem;
+   
     /* border: 1px solid purple; */
     /* width: 85%; */
     /* display: flex;
     flex-wrap: wrap; */
+}
+#listCon li{
+    text-align: center;
+    margin: .8rem;
+    /* background-color: #ad2614; */
+}
+#listCon div{
+    background-color: #ff3a1f;
 }
 ul div{
     /* border:1px solid blue; */

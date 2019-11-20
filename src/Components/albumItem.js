@@ -8,15 +8,15 @@ const albumItem = props => {
                         <li><img src={props.img} alt='Album Img' /></li>
 
                         <li className='item'>
-                                <Link to={"/album/" + props.id}>
+                                <Link className='link' to={"/album/" + props.id}>
                                         Album Name:{props.albumName}
                                 </Link>
                         </li>
                         <li className='item'>Artist Name:{props.artist}</li>
 
-                        <li className='item'>
+                        {/* <li className='item' id='itemUrl'>
                                 More info:{props.url}
-                        </li>
+                        </li> */}
 
                 </div>
         );
