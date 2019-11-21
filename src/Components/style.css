@@ -61,11 +61,9 @@ body{
     /* two layers of shadow making it look better?  */
     box-shadow: 0px 5px 10px rgba(145,26,13,0.1),0px 15px 40px rgba(145,26,13,0.3);
     border-radius: .5%;
+    transition:  .8s;
+}
 
-}
-.formBut:hover{
-    color:white;
-}
 .formBut:hover{
     background-color: #CC2D18;
 }
@@ -91,6 +89,7 @@ form input{
     color: #F5F7F4;
     font-family: rubik;
     line-height: 39px;
+    transition: .8s;
 }
 .link:hover{
     color:#CC2D18;
@@ -186,6 +185,11 @@ nav h1{
     font-size: 1rem;
     box-shadow: 0px 3px 5px 0px #ad2514;
     border-radius: .5%;
+    transition: .8s;
+}
+#searchBut:hover{
+    background-color: #F5F7F4;
+    color: #ad2614;
 }
 a:visited,a{
     color:#F5F7F4;
