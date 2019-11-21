@@ -7,11 +7,13 @@ const artistItem = props => {
                         <li><img src={props.img} alt='Song Img' /></li>
                         <li>
                                 <Link className='link' to={"/song/" + props.id}>
-                                        Song Name:{props.songName}
+                                        {props.songName}
                                 </Link>
                         </li>
-                        <li className='item'>Artist Name:{props.artistName}</li>
-                        <li className='item'>Plays:{props.plays}</li>
+                        <li className='item'>Artist:{props.artistName}</li>
+                        <li className='item'>Album:{props.albumName}</li>
+                        <li className='item'>Plays: {parseFloat(props.plays).toLocaleString('en')}</li>
+
                         {/* <li className='item'>More info:{props.url}</li> */}
 
                 </div>

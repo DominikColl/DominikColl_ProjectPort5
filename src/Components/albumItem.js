@@ -9,10 +9,10 @@ const albumItem = props => {
 
                         <li className='item'>
                                 <Link className='link' to={"/album/" + props.id}>
-                                        Album Name: {props.albumName}
+                                        {props.albumName}
                                 </Link>
                         </li>
-                        <li className='item'>Artist Name: {props.artist}</li>
+                        <li className='item'>Artist: {props.artist}</li>
 
                         {/* <li className='item' id='itemUrl'>
                                 More info:{props.url}

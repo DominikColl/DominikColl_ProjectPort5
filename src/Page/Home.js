@@ -98,8 +98,9 @@ class Home extends Component {
 
   //click function that will happen when form is submitted
   //checks filter if fetching song artist or album the triggers fucntion to fetch data
-  click = () => {
-    this.fetchTopTracks();
+  click = (e) => {
+    e.preventDefault();
+    // this.fetchTopTracks();
     console.log(this.state.filter);
     //grabbing input value 
     let search = document.querySelector('input').value;
@@ -125,6 +126,18 @@ class Home extends Component {
   //happens when filter button is clicked will be set using id of button clicked
   btnClick = (e) => {
     let filter = e.target.id;
+    // e.target.classList.add('testSwitch');
+    // console.log(filter);
+    // if (filter !== 'Song') {
+    //   let t = document.querySelector('#Song');
+    //   t.classList.add('formBut1');
+    // } if (filter !== 'Album') {
+    //   let d = document.querySelector('#Album');
+    //   d.classList.add('formBut1');
+    // } if (filter !== 'Artist') {
+    //   let z = document.querySelector('#Artist');
+    //   z.classList.add('formBut1');
+    // }
     this.setState({ filter });
     console.log(filter);
   }
@@ -157,6 +170,9 @@ class Home extends Component {
           return <AlbumItem key={i} id={e.mbid} img={e.image[2]['#text']} albumName={e.name} artist={e.artist} url={e.url} />
         }
       } else if (this.state.filter === 'Song') {
+        // console.log(e);
+        //song item has prop for album name holding off on adding extta fetch to get album name till after presentations fetch limit worries me
+        //call fetchSongDetail for album name
         if (e.mbid) {
           return <SongItem key={i} img={e.image[2]['#text']} id={e.mbid} songName={e.name} artistName={e.artist} plays={e.listeners} url={e.url} />
         }

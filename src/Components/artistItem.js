@@ -7,10 +7,11 @@ const artistItem = props => {
                         <li><img src={props.img} alt='Artist Img' /></li>
                         <li>
                                 <Link className='link' to={"/artist/" + props.id}>
-                                        Artist Name:{props.name}
+                                        {props.name}
                                 </Link>
                         </li>
-                        <li className='item' id='artistItem'>Followers:{props.followers}</li>
+                        <li className='item' id='artistItem'>Followers:{parseFloat(props.followers).toLocaleString('en')}</li>
+
                         {/* <li className='item' id='artistItem'>More Info:{props.url}</li> */}
                 </div>
         );

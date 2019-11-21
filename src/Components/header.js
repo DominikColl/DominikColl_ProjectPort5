@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const header = props => {
     return (
         <nav id="nav">
-            <h1 id='logo'> <NavLink to='/'> <MdSpeaker onClick={props.click} /></NavLink></h1>
+            <h1 id='logo'> <NavLink id='navLink' to='/'> <MdSpeaker onClick={props.click} />MusicData</NavLink></h1>
         </nav>
     );
 }
